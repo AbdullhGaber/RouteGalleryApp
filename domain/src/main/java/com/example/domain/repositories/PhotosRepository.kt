@@ -1,22 +1,17 @@
 package com.example.domain.repositories
 
+import com.example.domain.models.PhotosResponse
+import com.example.domain.utils.Resource
+import kotlinx.coroutines.flow.Flow
+
 interface PhotosRepository {
-    fun getPhotos(
-        onSuccess : () -> Unit,
-        onFailure : (Throwable) -> Unit
-    )
+    fun getPhotos() : Flow<Resource<PhotosResponse>>
 }
 
 interface PhotosRemoteDataSource {
-    fun getPhotos(
-        onSuccess: () -> Unit,
-        onFailure: (Throwable) -> Unit
-    )
+    fun getPhotos() : Flow<Resource<PhotosResponse>>
 }
 
 interface PhotosOfflineDataSource {
-    fun getPhotos(
-        onSuccess: () -> Unit,
-        onFailure: (Throwable) -> Unit
-    )
+    fun getPhotos() : Flow<Resource<PhotosResponse>>
 }
