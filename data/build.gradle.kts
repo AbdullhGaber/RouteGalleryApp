@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.dagger.hilt)
 }
 
 android {
@@ -41,10 +42,10 @@ dependencies {
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
-    implementation(libs.coil)
-    implementation(libs.coil.network.okhttp)
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)       // optional
+    implementation(libs.hilt.android)
+    ksp(libs.dagger.hilt.android.compiler)
     implementation(project(":domain"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
