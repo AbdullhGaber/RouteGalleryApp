@@ -1,8 +1,8 @@
 package com.example.domain.utils
 
 sealed class Resource<T>(
-    data : T? = null,
-    message : String? = null
+    val data : T? = null,
+    val message : String? = null
 ) {
     class Unspecified<T> : Resource<T>()
     class Loading<T> : Resource<T>()
