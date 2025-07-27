@@ -1,4 +1,4 @@
-package com.example.domain.di
+package com.example.data.di
 
 import com.example.domain.repositories.PhotosRepository
 import com.example.domain.use_cases.GetPhotosUseCase
@@ -12,7 +12,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(ViewModelComponent::class)
 object UseCasesModule {
-    @Singleton
     @Provides
     fun getPhotosUseCase(repository : PhotosRepository) = GetPhotosUseCase(repository)
 }

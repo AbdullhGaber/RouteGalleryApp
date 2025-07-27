@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.domain.models.Src
 
-@Entity
+@Entity(tableName = "photos")
 data class PhotoEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = -1,
@@ -13,7 +13,7 @@ data class PhotoEntity(
     val height: Int? = null,
     val liked: Boolean? = null,
     val photographer: String? = null,
-    val photographerId: Int? = null,
+    val photographerId: Long? = null,
     val photographerUrl: String? = null,
     val src: Src? = null,
     val url: String? = null,
