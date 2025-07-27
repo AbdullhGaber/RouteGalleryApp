@@ -21,7 +21,9 @@ class PhotosRepositoryImpl @Inject constructor(
             val response = mPhotoRemoteDataSource.getPhotos()
 
             if(response.photos != null){
-                mPhotoOfflineDataSource.addPhoto(response.photos!![0])
+                response.photos!!.forEach {
+                    mPhotoOfflineDataSource.addPhoto(it)
+                }
             }
 
             emit(Resource.Success(response.photos?: emptyList()))
