@@ -14,8 +14,6 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import coil3.request.error
 import coil3.request.placeholder
-import coil3.request.transformations
-import coil3.transform.CircleCropTransformation
 import com.example.domain.models.Photo
 import com.example.routegalleryapp.R
 
