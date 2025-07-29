@@ -7,7 +7,7 @@ import com.example.domain.models.Src
 @Entity(tableName = "photos")
 data class PhotoEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = -1,
+    val photoId: Int = -1,
     val alt: String? = null,
     val avgColor: String? = null,
     val height: Int? = null,
