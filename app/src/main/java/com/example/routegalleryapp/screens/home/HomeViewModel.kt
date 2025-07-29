@@ -1,10 +1,12 @@
 package com.example.routegalleryapp.screens.home
 
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.data.utils.Constants
 import com.example.domain.use_cases.GetPhotosUseCase
 import com.example.domain.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,13 +15,25 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val mGetPhotosUseCase: GetPhotosUseCase
+    private val mGetPhotosUseCase: GetPhotosUseCase,
+    private val sharedPreferences: SharedPreferences
 ) : ViewModel() {
     private val _photos = mutableStateOf(PhotoState())
     val photos : State<PhotoState> = _photos
 
+    private val _isDark = mutableStateOf(sharedPreferences.getBoolean(Constants.IS_DARK_SP, false))
+    val isDark : State<Boolean> = _isDark
+
     init {
         getPhotos()
+    }
+
+     fun toggleTheme() {
+        val newValue = !_isDark.value //night => light vice versa
+
+        _isDark.value = newValue // Update the state
+
+        sharedPreferences.edit().putBoolean(Constants.IS_DARK_SP, newValue).apply()
     }
 
     private fun getPhotos(){
